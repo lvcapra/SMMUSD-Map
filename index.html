@@ -14,7 +14,7 @@
         <style>
         #map {
             width: 1991px;
-            height: 1231px;
+            height: 1192px;
         }
         </style>
         <title></title>
@@ -53,7 +53,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[34.01765998076074,-118.46391291768168],[34.01988676006182,-118.45960462338421]]);
+        }).fitBounds([[34.00443984033163,-118.47849788502523],[34.020506157540254,-118.45986481314357]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -160,9 +160,6 @@
                 mouseover: highlightFeature,
             });
             var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['site_name'] !== null ? autolinker.link(String(feature.properties['site_name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -332,22 +329,23 @@
   body { margin: 0; }
   #map { width: 100vw !important; height: 100vh !important; }
 
-  /* Logo, top left corner */
-#logo { position: absolute; top: 12px; left: 10px; z-index: 1000; height: 60px; }
-
-/* Push the zoom controls down below the logo */
-.leaflet-top.leaflet-left { top: 72px; }
+  /* Logo in the top-left corner, zoom controls below it */
+  #logo { position: absolute; top: 12px; left: 10px; z-index: 1000; height: 60px; }
+  .leaflet-top.leaflet-left { top: 72px; }
 
   /* Hide qgis2web's layer list (replaced by the custom legend) */
   .leaflet-control-layers { display: none !important; }
 
-  /* Bottom-left stack: summary above legend */
+  /* Bottom-left stack: summary, school picker, legend */
   #bottom-left { position: absolute; bottom: 20px; left: 10px; z-index: 1000;
     display: flex; flex-direction: column; gap: 8px; }
   .info-box { background: white; padding: 10px 12px; border-radius: 6px;
     box-shadow: 0 1px 5px #0004; font: 13px sans-serif; }
   .info-box h4 { margin: 0 0 6px; font-size: 14px; }
   .hint { color: #777; font-size: 11px; margin-top: 4px; }
+
+  /* School dropdown */
+  #school-select { width: 100%; font: 13px sans-serif; padding: 4px; }
 
   /* Clickable legend rows */
   .legend-row { display: flex; align-items: center; gap: 8px; margin: 3px 0;
@@ -366,6 +364,10 @@
 <img id="logo" src="logo.jpg" alt="Logo">
 <div id="bottom-left">
   <div id="summary" class="info-box"></div>
+  <div class="info-box">
+    <h4>Select School</h4>
+    <select id="school-select"></select>
+  </div>
   <div id="legend" class="info-box"></div>
 </div>
 
@@ -378,10 +380,10 @@
   const styleFn = window[find('style_Assets_\\d+')];
 
   map.invalidateSize();
+  map.attributionControl.addAttribution('Imagery: LA County / LARIAC (2014)');
   window.resetLabels = function () {};
 
   const sqft = p => Number(p.area_sqft) || 0;
-  map.attributionControl.addAttribution('Imagery: LA County / LARIAC (2014)');
   const fmt  = n => Math.round(n).toLocaleString();
 
   // Legend: [category value in data, label shown]
@@ -389,7 +391,11 @@
     ['Functional',     'Functional Turf'],
     ['Non-Functional', 'Non-Functional Turf']
   ];
-  const active = new Set(legendItems.map(([v]) => v));
+  const activeCats = new Set(legendItems.map(([v]) => v));
+  let selectedSchool = '';   // '' = all schools
+
+  const isVisible = p =>
+    activeCats.has(p.category) && (!selectedSchool || p.site_name === selectedSchool);
 
   // Collect every drawn polygon (qgis2web may nest layers), labeling each feature once
   const shapes = [];
@@ -412,7 +418,7 @@
 
   function updateMap() {
     shapes.forEach(l => {
-      const show = active.has(l.feature.properties.category);
+      const show = isVisible(l.feature.properties);
       const el = l.getElement && l.getElement();
       if (el) el.style.display = show ? '' : 'none';
       if (l.getTooltip()) show ? l.openTooltip() : l.closeTooltip();
@@ -421,17 +427,37 @@
   }
 
   function updateSummary() {
-    const feats = data.features.map(f => f.properties).filter(p => active.has(p.category));
+    const feats = data.features.map(f => f.properties).filter(isVisible);
     const total = feats.reduce((s, p) => s + sqft(p), 0);
     const byCat = {};
     feats.forEach(p => byCat[p.category] = (byCat[p.category] || 0) + sqft(p));
-    let html = `<h4>Summary</h4><b>${feats.length} areas · ${fmt(total)} sq ft total</b><br>`;
+    let html = `<h4>Summary${selectedSchool ? ': ' + selectedSchool : ''}</h4>` +
+               `<b>${feats.length} areas · ${fmt(total)} sq ft total</b><br>`;
     for (const c in byCat) html += `${c}: ${fmt(byCat[c])} sq ft<br>`;
-    if (!feats.length) html += '<i>No categories selected</i>';
+    if (!feats.length) html += '<i>Nothing selected</i>';
     document.getElementById('summary').innerHTML = html;
   }
 
-  // Build the legend
+  function zoomToVisible() {
+    const bounds = L.latLngBounds([]);
+    shapes.forEach(l => { if (isVisible(l.feature.properties)) bounds.extend(l.getBounds()); });
+    if (bounds.isValid()) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 20 });
+  }
+
+  function refresh() { updateMap(); updateSummary(); }
+
+  // School dropdown, built from site_name values
+  const schools = [...new Set(data.features.map(f => f.properties.site_name).filter(Boolean))].sort();
+  const select = document.getElementById('school-select');
+  select.add(new Option('All schools', ''));
+  schools.forEach(s => select.add(new Option(s, s)));
+  select.addEventListener('change', () => {
+    selectedSchool = select.value;
+    refresh();
+    zoomToVisible();
+  });
+
+  // Category legend
   const legendEl = document.getElementById('legend');
   legendEl.innerHTML = '<h4>Legend</h4>';
   legendItems.forEach(([value, label]) => {
@@ -441,17 +467,15 @@
     row.innerHTML = `<span class="legend-swatch" style="background:${color}"></span>
                      <span class="legend-label">${label}</span>`;
     row.addEventListener('click', () => {
-      active.has(value) ? active.delete(value) : active.add(value);
-      row.classList.toggle('off', !active.has(value));
-      updateMap();
-      updateSummary();
+      activeCats.has(value) ? activeCats.delete(value) : activeCats.add(value);
+      row.classList.toggle('off', !activeCats.has(value));
+      refresh();
     });
     legendEl.appendChild(row);
   });
   legendEl.insertAdjacentHTML('beforeend', '<div class="hint">Click to show/hide</div>');
 
-  updateMap();
-  updateSummary();
+  refresh();
 })();
 </script>
 <!-- ===== End custom additions ===== -->
