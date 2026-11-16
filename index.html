@@ -344,6 +344,11 @@
   .info-box h4 { margin: 0 0 6px; font-size: 14px; }
   .hint { color: #777; font-size: 11px; margin-top: 4px; }
 
+  /* Download button */
+  .dl-btn { margin-top: 8px; width: 100%; padding: 5px; font: 13px sans-serif;
+    background: #f3f3f3; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; }
+  .dl-btn:hover { background: #e6e6e6; }
+
   /* School dropdown */
   #school-select { width: 100%; font: 13px sans-serif; padding: 4px; }
 
@@ -435,6 +440,7 @@
                `<b>${feats.length} areas · ${fmt(total)} sq ft total</b><br>`;
     for (const c in byCat) html += `${c}: ${fmt(byCat[c])} sq ft<br>`;
     if (!feats.length) html += '<i>Nothing selected</i>';
+    else html += '<button class="dl-btn" id="dl-csv">⬇ Download CSV</button>';
     document.getElementById('summary').innerHTML = html;
   }
 
@@ -445,6 +451,28 @@
   }
 
   function refresh() { updateMap(); updateSummary(); }
+
+  // CSV download of the rows behind the current summary
+  function downloadCSV() {
+    const rows = data.features.map(f => f.properties).filter(isVisible);
+    if (!rows.length) return;
+    const cols = Object.keys(rows[0]).filter(k => k !== 'fid');   // all fields except fid
+    const esc = v => {
+      const s = v == null ? '' : String(v);
+      return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    };
+    const csv = [cols.join(','), ...rows.map(r => cols.map(c => esc(r[c])).join(','))].join('\r\n');
+    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    const name = (selectedSchool || 'All_schools').replace(/[^\w-]+/g, '_');
+    a.href = URL.createObjectURL(blob);
+    a.download = `${name}_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+  document.getElementById('summary').addEventListener('click', e => {
+    if (e.target.id === 'dl-csv') downloadCSV();
+  });
 
   // School dropdown, built from site_name values
   const schools = [...new Set(data.features.map(f => f.properties.site_name).filter(Boolean))].sort();
