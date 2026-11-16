@@ -14,7 +14,7 @@
         <style>
         #map {
             width: 1991px;
-            height: 1192px;
+            height: 1153px;
         }
         </style>
         <title></title>
@@ -53,7 +53,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[34.00443984033163,-118.47849788502523],[34.020506157540254,-118.45986481314357]]);
+        }).fitBounds([[34.03670036006352,-118.48886649537572],[34.041688537363996,-118.48298409078018]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -161,13 +161,16 @@
             });
             var popupContent = '<table>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <td colspan="2">' + (feature.properties['site_name'] !== null ? autolinker.link(String(feature.properties['site_name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['category'] !== null ? autolinker.link(String(feature.properties['category']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['notes'] !== null ? autolinker.link(String(feature.properties['notes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">area_sqft</th>\
@@ -456,7 +459,7 @@
   function downloadCSV() {
     const rows = data.features.map(f => f.properties).filter(isVisible);
     if (!rows.length) return;
-    const cols = Object.keys(rows[0]).filter(k => k !== 'fid');   // all fields except fid
+    const cols = Object.keys(rows[0]);   // all fields, including fid
     const esc = v => {
       const s = v == null ? '' : String(v);
       return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
