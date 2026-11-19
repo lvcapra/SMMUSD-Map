@@ -404,55 +404,87 @@
         </script>
 		<!-- ===== Custom additions ===== -->
 <style>
-  /* Full-window map */
-  body { margin: 0; }
-  #map { width: 100vw !important; height: 100vh !important; }
+  :root {
+    --bg: #eef1f6; --card: #fff; --text: #1f2430; --muted: #6b7280;
+    --accent: #1a6fe0; --gap: 24px; --side: 340px;
+    --shadow: 0 2px 12px rgba(16, 24, 40, .08);
+  }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 
-  /* Logo in the top-left corner, zoom controls below it */
-  #logo { position: absolute; top: 12px; left: 10px; z-index: 1000; height: 60px; }
-  .leaflet-top.leaflet-left { top: 72px; }
+  /* Map: rounded panel to the right of the sidebar */
+  #map { position: fixed !important; top: var(--gap); right: var(--gap); bottom: var(--gap);
+    left: calc(var(--side) + var(--gap) * 2);
+    width: auto !important; height: auto !important;
+    border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; }
 
   /* Hide qgis2web's layer list (replaced by the custom legend) */
   .leaflet-control-layers { display: none !important; }
 
-  /* Bottom-left stack: summary, school picker, legend */
-  #bottom-left { position: absolute; bottom: 20px; left: 10px; z-index: 1000;
-    display: flex; flex-direction: column; gap: 8px; }
-  .info-box { background: white; padding: 10px 12px; border-radius: 6px;
-    box-shadow: 0 1px 5px #0004; font: 13px sans-serif; }
-  .info-box h4 { margin: 0 0 6px; font-size: 14px; }
-  .hint { color: #777; font-size: 11px; margin-top: 4px; }
+  /* Sidebar of cards */
+  #sidebar { position: fixed; top: var(--gap); left: var(--gap); bottom: var(--gap);
+    width: var(--side); display: flex; flex-direction: column; gap: 20px;
+    overflow-y: auto; z-index: 1000; }
+  .card { background: var(--card); border-radius: 18px; box-shadow: var(--shadow);
+    padding: 20px 24px; flex-shrink: 0; }
+  .card h3 { margin: 0 0 14px; font-size: 20px; font-weight: 700; }
+  .logo-card { display: flex; align-items: center; justify-content: center; padding: 16px; }
+  #logo { max-height: 72px; max-width: 100%; }
 
-  /* Download button */
-  .dl-btn { margin-top: 8px; width: 100%; padding: 5px; font: 13px sans-serif;
-    background: #f3f3f3; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; }
-  .dl-btn:hover { background: #e6e6e6; }
-
-  /* School dropdown */
-  #school-select { width: 100%; font: 13px sans-serif; padding: 4px; }
-
-  /* Clickable legend rows */
-  .legend-row { display: flex; align-items: center; gap: 8px; margin: 3px 0;
-    cursor: pointer; user-select: none; padding: 2px 4px; border-radius: 4px; }
-  .legend-row:hover { background: #0000000d; }
-  .legend-row.off { opacity: 0.35; }
+  /* Legend */
+  .legend-row { display: flex; align-items: center; gap: 16px; padding: 5px 4px;
+    font-size: 17px; cursor: pointer; user-select: none; border-radius: 8px; }
+  .legend-row:hover { background: #0000000a; }
+  .legend-row.off { opacity: .35; }
   .legend-row.off .legend-label { text-decoration: line-through; }
-  .legend-swatch { width: 18px; height: 14px; border: 1px solid #0003; }
+  .legend-swatch { width: 52px; height: 24px; border-radius: 6px; box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, .18); }
+
+  /* Site dropdown */
+  #school-select { width: 100%; font: inherit; font-size: 17px; color: var(--text);
+    padding: 11px 44px 11px 16px; border: 1.5px solid #374151; border-radius: 10px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231f2430' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;
+    appearance: none; -webkit-appearance: none; cursor: pointer; }
+
+  /* Summary */
+  .stats { border-collapse: collapse; font-size: 17px; margin-left: auto; margin-right: auto; }
+  .stats td { padding: 2px 6px; }
+  .stats td:first-child { text-align: right; }
+  .stats td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .muted { color: var(--muted); font-style: italic; margin: 0; }
+  .dl-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px;
+    padding: 0; background: none; border: 0; cursor: pointer; font: inherit;
+    font-size: 17px; font-weight: 600; color: var(--accent); text-decoration: underline; }
+
+  /* Map controls */
+  .north-arrow { background: #fff; border-radius: 10px; box-shadow: var(--shadow);
+    width: 44px; padding: 6px 0 8px; text-align: center; font-weight: 700; font-size: 15px; }
+  .north-arrow svg { display: block; margin: 2px auto 0; }
+  .leaflet-bar { border: none !important; border-radius: 10px !important;
+    box-shadow: var(--shadow); overflow: hidden; }
+  .leaflet-bar a { width: 40px !important; height: 40px !important;
+    line-height: 40px !important; font-size: 22px !important; }
+  .leaflet-control-scale-line { background: rgba(255, 255, 255, .92); border-color: #333;
+    font-size: 12px; padding: 2px 6px; }
 
   /* Always-on sq ft labels */
-  .area-label { background: none; border: none; box-shadow: none;
+  .area-label { background: none; border: none; box-shadow: none; font-size: 11px;
     color: white; font-weight: bold; text-shadow: 0 0 3px #000, 0 0 3px #000; }
   .area-label::before { display: none; }
+
+  /* Small screens: sidebar on top, map below */
+  @media (max-width: 800px) {
+    :root { --gap: 12px; }
+    #sidebar { right: var(--gap); bottom: auto; width: auto; max-height: 42vh; gap: 12px; }
+    #map { top: calc(42vh + var(--gap) * 2); left: var(--gap); }
+  }
 </style>
 
-<img id="logo" src="logo.jpg" alt="Logo">
-<div id="bottom-left">
-  <div id="summary" class="info-box"></div>
-  <div class="info-box">
-    <h4>Select School</h4>
-    <select id="school-select"></select>
-  </div>
-  <div id="legend" class="info-box"></div>
+<div id="sidebar">
+  <div class="card logo-card"><img id="logo" src="logo.jpg" alt="Logo"></div>
+  <div class="card"><h3>Legend</h3><div id="legend"></div></div>
+  <div class="card"><h3>Select Site</h3><select id="school-select"></select></div>
+  <div class="card" id="summary"></div>
 </div>
 
 <script>
@@ -475,7 +507,25 @@
   map.attributionControl.addAttribution('Imagery: LA County / LARIAC (2014)');
   window.resetLabels = function () {};
 
-  // site_name -> full_name lookup
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const sqft = p => Number(p.area_sqft) || 0;
+  const fmt  = n => Math.round(n).toLocaleString();
+
+  // ---- Map controls: north arrow (top-left), zoom + scale (bottom-left) ----
+  const North = L.Control.extend({
+    onAdd() {
+      const d = L.DomUtil.create('div', 'north-arrow');
+      d.innerHTML = 'N<svg width="20" height="22" viewBox="0 0 20 22">' +
+                    '<path d="M10 0 L20 22 L10 16 L0 22 Z" fill="#1f2430"/></svg>';
+      return d;
+    }
+  });
+  new North({ position: 'topleft' }).addTo(map);
+  L.control.scale({ position: 'bottomleft', imperial: true, metric: false, maxWidth: 160 }).addTo(map);
+  zoomControl.setPosition('bottomleft');   // sits above the scale bar
+
+  // ---- Site names: site_name -> full_name ----
   const siteLabel = {};
   (sitesData ? sitesData.features : []).forEach(f => {
     const p = f.properties;
@@ -483,49 +533,39 @@
   });
   const labelFor = name => siteLabel[name] || name;
 
-    // Sites: no fill normally, 10% fill on hover, custom popup on click.
+  // ---- Sites: no fill normally, 10% fill on hover, custom popup ----
   // Drawn under the lawns so lawn clicks/hover still go to the lawns.
-  const esc = s => String(s ?? '').replace(/[&<>"]/g, c =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   if (sitesLayer) {
     map.getPane(sitesLayer.options.pane).style.zIndex = 401;
     sitesLayer.eachLayer(l => {
       l.off('mouseover', highlightFeature);   // remove qgis2web's solid-yellow hover
       l.on('mouseover', e => e.target.setStyle({ fillColor: SITE_COLOR, fillOpacity: SITE_FILL }));
-
       const p = l.feature.properties;
       l.off('popupopen');
       l.unbindPopup();
-      l.bindPopup(
-        `<strong>${esc(p.full_name || p.site_name)}</strong>` +
-        (p.address ? `<br>${esc(p.address)}` : '')
-      );
+      l.bindPopup(`<strong>${esc(p.full_name || p.site_name)}</strong>` +
+                  (p.address ? `<br>${esc(p.address)}` : ''));
     });
   }
 
-  const sqft = p => Number(p.area_sqft) || 0;
-  const fmt  = n => Math.round(n).toLocaleString();
-
-  // Legend: [category value in data, label shown]
+  // ---- Categories: [value in data, label shown in legend] ----
   const legendItems = [
     ['Functional',     'Functional Turf'],
-    ['Non-Functional', 'Non-Functional Turf']
+    ['Non-Functional', 'Non-functional Turf']
   ];
   const activeCats = new Set(legendItems.map(([v]) => v));
-  let selectedSchool = '';   // '' = all schools
+  let selectedSchool = '';   // '' = all sites
 
   const isVisible = p =>
     activeCats.has(p.category) && (!selectedSchool || p.site_name === selectedSchool);
 
-    // Collect every drawn polygon (qgis2web may nest layers),
-  // set the asset popup on each, and label each feature once
+  // ---- Assets: popup on every shape, sq ft label once per feature ----
   const shapes = [];
   const labeled = new Set();
   (function walk(group) {
     group.eachLayer(l => {
       if (l.feature) {
         shapes.push(l);
-
         const p = l.feature.properties;
         l.off('popupopen');
         l.unbindPopup();
@@ -535,7 +575,6 @@
           `Type: ${esc(p.category)}<br>` +
           `Area: ${fmt(sqft(p))}`
         );
-
         if (!labeled.has(l.feature)) {
           labeled.add(l.feature);
           l.unbindTooltip();
@@ -558,22 +597,34 @@
     });
   }
 
+  // ---- Summary card ----
+  const dlIcon = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>';
+
   function updateSummary() {
     const feats = data.features.map(f => f.properties).filter(isVisible);
     const total = feats.reduce((s, p) => s + sqft(p), 0);
     const byCat = {};
     feats.forEach(p => byCat[p.category] = (byCat[p.category] || 0) + sqft(p));
-    let html = `<h4>Summary${selectedSchool ? ': ' + labelFor(selectedSchool) : ''}</h4>` +
-               `<b>${feats.length} areas · ${fmt(total)} sq ft total</b><br>`;
-    for (const c in byCat) html += `${c}: ${fmt(byCat[c])} sq ft<br>`;
-    if (!feats.length) html += `<i>${selectedSchool ? 'No assets mapped yet' : 'Nothing selected'}</i>`;
-    else html += '<button class="dl-btn" id="dl-csv">⬇ Download CSV</button>';
+
+    let html = `<h3>${esc(selectedSchool ? labelFor(selectedSchool) : 'All Sites')}</h3>`;
+    if (!feats.length) {
+      html += `<p class="muted">${selectedSchool ? 'No assets mapped yet' : 'Nothing selected'}</p>`;
+    } else {
+      html += '<table class="stats">' +
+        `<tr><td>${feats.length} turf area${feats.length === 1 ? '' : 's'}:</td><td>${fmt(total)} ft²</td></tr>`;
+      for (const c in byCat) html += `<tr><td>${esc(c)}:</td><td>${fmt(byCat[c])} ft²</td></tr>`;
+      html += '</table>' +
+        `<button class="dl-link" id="dl-csv">${dlIcon}<span>Download CSV</span></button>`;
+    }
     document.getElementById('summary').innerHTML = html;
   }
 
   function zoomToVisible() {
     const bounds = L.latLngBounds([]);
     shapes.forEach(l => { if (isVisible(l.feature.properties)) bounds.extend(l.getBounds()); });
+    if (!bounds.isValid() && sitesLayer) bounds.extend(sitesLayer.getBounds());
     if (bounds.isValid()) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 20 });
   }
 
@@ -588,35 +639,35 @@
 
   function refresh() { updateMap(); updateSummary(); }
 
-  // CSV download of the rows behind the current summary
+  // ---- CSV download of the rows behind the current summary ----
   function downloadCSV() {
     const rows = data.features.map(f => f.properties).filter(isVisible);
     if (!rows.length) return;
     const cols = Object.keys(rows[0]);   // all fields, including fid
-    const esc = v => {
+    const q = v => {
       const s = v == null ? '' : String(v);
       return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
     };
-    const csv = [cols.join(','), ...rows.map(r => cols.map(c => esc(r[c])).join(','))].join('\r\n');
+    const csv = [cols.join(','), ...rows.map(r => cols.map(c => q(r[c])).join(','))].join('\r\n');
     const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
     const a = document.createElement('a');
-    const name = (selectedSchool || 'All_schools').replace(/[^\w-]+/g, '_');
+    const name = (selectedSchool || 'All_sites').replace(/[^\w-]+/g, '_');
     a.href = URL.createObjectURL(blob);
     a.download = `${name}_${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(a.href);
   }
   document.getElementById('summary').addEventListener('click', e => {
-    if (e.target.id === 'dl-csv') downloadCSV();
+    if (e.target.closest('#dl-csv')) downloadCSV();
   });
 
-  // School dropdown: every site from the Sites layer (falls back to asset site names)
+  // ---- Site dropdown: every site from the Sites layer ----
   const schools = Object.keys(siteLabel).length
     ? Object.keys(siteLabel)
     : [...new Set(data.features.map(f => f.properties.site_name).filter(Boolean))];
   schools.sort((a, b) => labelFor(a).localeCompare(labelFor(b)));
   const select = document.getElementById('school-select');
-  select.add(new Option('All schools', ''));
+  select.add(new Option('All sites', ''));
   schools.forEach(s => select.add(new Option(labelFor(s), s)));
   select.addEventListener('change', () => {
     selectedSchool = select.value;
@@ -624,23 +675,31 @@
     selectedSchool ? zoomToSite(selectedSchool) : zoomToVisible();
   });
 
-  // Category legend
+  // ---- Legend: site boundary + categories, each click toggles ----
   const legendEl = document.getElementById('legend');
-  legendEl.innerHTML = '<h4>Legend</h4>';
-  legendItems.forEach(([value, label]) => {
-    const color = styleFn({ properties: { category: value } }).fillColor;
+  function addLegendRow(swatchStyle, label, onClick) {
     const row = document.createElement('div');
     row.className = 'legend-row';
-    row.innerHTML = `<span class="legend-swatch" style="background:${color}"></span>
-                     <span class="legend-label">${label}</span>`;
-    row.addEventListener('click', () => {
+    row.title = 'Click to show/hide';
+    row.innerHTML = `<span class="legend-swatch" style="${swatchStyle}"></span>
+                     <span class="legend-label">${esc(label)}</span>`;
+    row.addEventListener('click', () => onClick(row));
+    legendEl.appendChild(row);
+  }
+  if (sitesLayer) {
+    addLegendRow(`border-color:${SITE_COLOR}; background:transparent`, 'Site Boundary', row => {
+      map.hasLayer(sitesLayer) ? map.removeLayer(sitesLayer) : map.addLayer(sitesLayer);
+      row.classList.toggle('off', !map.hasLayer(sitesLayer));
+    });
+  }
+  legendItems.forEach(([value, label]) => {
+    const color = styleFn({ properties: { category: value } }).fillColor;
+    addLegendRow(`background:${color}`, label, row => {
       activeCats.has(value) ? activeCats.delete(value) : activeCats.add(value);
       row.classList.toggle('off', !activeCats.has(value));
       refresh();
     });
-    legendEl.appendChild(row);
   });
-  legendEl.insertAdjacentHTML('beforeend', '<div class="hint">Click to show/hide</div>');
 
   refresh();
 })();
