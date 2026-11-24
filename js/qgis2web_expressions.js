@@ -757,7 +757,7 @@ function fnc_project_color(values, context) {
 
 
 
-function exp_label_Assets_v2_12_eval_expression(context) {
+function exp_label_Assets_v2_13_eval_expression(context) {
     // format_number(area_sqft, 0, NULL, FALSE, FALSE) || ' sq ft'
 
     var feature = context.feature;
@@ -770,7 +770,7 @@ function exp_label_Assets_v2_12_eval_expression(context) {
 }
 
 
-function exp_label_Assets_v2_12_eval_expression(context) {
+function exp_label_Assets_v2_13_eval_expression(context) {
     // format_number(area_sqft, 0, NULL, FALSE, FALSE) || ' sq ft'
 
     var feature = context.feature;

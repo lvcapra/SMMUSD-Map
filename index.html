@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="css/leaflet.photon.css">
         <style>
         #map {
-            width: 1771px;
-            height: 1055px;
+            width: 1773px;
+            height: 1153px;
         }
         </style>
         <title></title>
@@ -34,8 +34,8 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/Sites_11.js"></script>
-        <script src="data/Assets_v2_12.js"></script>
+        <script src="data/Sites_12.js"></script>
+        <script src="data/Assets_v2_13.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -54,7 +54,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[34.00811798084725,-118.4914464093839],[34.0142882877953,-118.47906307437279]]);
+        }).fitBounds([[34.024541576194444,-118.49771728804468],[34.03554046799185,-118.48440911987626]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -149,97 +149,106 @@
         });
         layer_LACounty_Aerial_0;
         map.addLayer(layer_LACounty_Aerial_0);
-        map.createPane('pane_asdf1_1');
-        map.getPane('pane_asdf1_1').style.zIndex = 401;
-        var img_asdf1_1 = 'data/asdf1_1.png';
-        var img_bounds_asdf1_1 = [[34.02285147502194,-118.82983065961791],[34.02845803929854,-118.82317195182544]];
-        var layer_asdf1_1 = new L.imageOverlay(img_asdf1_1,
-                                              img_bounds_asdf1_1,
-                                              {pane: 'pane_asdf1_1'});
-        bounds_group.addLayer(layer_asdf1_1);
-        map.addLayer(layer_asdf1_1);
-        map.createPane('pane_asdf2_2');
-        map.getPane('pane_asdf2_2').style.zIndex = 402;
-        var img_asdf2_2 = 'data/asdf2_2.png';
-        var img_bounds_asdf2_2 = [[34.03809928535994,-118.4862273309165],[34.04030205162058,-118.48364528499609]];
-        var layer_asdf2_2 = new L.imageOverlay(img_asdf2_2,
-                                              img_bounds_asdf2_2,
-                                              {pane: 'pane_asdf2_2'});
-        bounds_group.addLayer(layer_asdf2_2);
-        map.addLayer(layer_asdf2_2);
-        map.createPane('pane_asdf3_3');
-        map.getPane('pane_asdf3_3').style.zIndex = 403;
-        var img_asdf3_3 = 'data/asdf3_3.png';
-        var img_bounds_asdf3_3 = [[34.01116533256837,-118.47174737675432],[34.01604478463181,-118.46608749843944]];
-        var layer_asdf3_3 = new L.imageOverlay(img_asdf3_3,
-                                              img_bounds_asdf3_3,
-                                              {pane: 'pane_asdf3_3'});
-        bounds_group.addLayer(layer_asdf3_3);
-        map.addLayer(layer_asdf3_3);
-        map.createPane('pane_asdf4_4');
-        map.getPane('pane_asdf4_4').style.zIndex = 404;
-        var img_asdf4_4 = 'data/asdf4_4.png';
-        var img_bounds_asdf4_4 = [[34.02807185044046,-118.49202614746265],[34.03103791725688,-118.48855039901878]];
-        var layer_asdf4_4 = new L.imageOverlay(img_asdf4_4,
-                                              img_bounds_asdf4_4,
-                                              {pane: 'pane_asdf4_4'});
-        bounds_group.addLayer(layer_asdf4_4);
-        map.addLayer(layer_asdf4_4);
-        map.createPane('pane_asdf5_5');
-        map.getPane('pane_asdf5_5').style.zIndex = 405;
-        var img_asdf5_5 = 'data/asdf5_5.png';
-        var img_bounds_asdf5_5 = [[34.031050686037034,-118.47870191931301],[34.03352002884231,-118.47579043665922]];
-        var layer_asdf5_5 = new L.imageOverlay(img_asdf5_5,
-                                              img_bounds_asdf5_5,
-                                              {pane: 'pane_asdf5_5'});
-        bounds_group.addLayer(layer_asdf5_5);
-        map.addLayer(layer_asdf5_5);
-        map.createPane('pane_asdf6_6');
-        map.getPane('pane_asdf6_6').style.zIndex = 406;
-        var img_asdf6_6 = 'data/asdf6_6.png';
-        var img_bounds_asdf6_6 = [[34.00595701473303,-118.47904120282958],[34.008393213112875,-118.47620761686021]];
-        var layer_asdf6_6 = new L.imageOverlay(img_asdf6_6,
-                                              img_bounds_asdf6_6,
-                                              {pane: 'pane_asdf6_6'});
-        bounds_group.addLayer(layer_asdf6_6);
-        map.addLayer(layer_asdf6_6);
-        map.createPane('pane_asdf7_7');
-        map.getPane('pane_asdf7_7').style.zIndex = 407;
-        var img_asdf7_7 = 'data/asdf7_7.png';
-        var img_bounds_asdf7_7 = [[34.01107576706088,-118.47357423538294],[34.01596684413179,-118.4679301377129]];
-        var layer_asdf7_7 = new L.imageOverlay(img_asdf7_7,
-                                              img_bounds_asdf7_7,
-                                              {pane: 'pane_asdf7_7'});
-        bounds_group.addLayer(layer_asdf7_7);
-        map.addLayer(layer_asdf7_7);
-        map.createPane('pane_asdf8_8');
-        map.getPane('pane_asdf8_8').style.zIndex = 408;
-        var img_asdf8_8 = 'data/asdf8_8.png';
-        var img_bounds_asdf8_8 = [[34.02743085729619,-118.5030686040829],[34.03022819193451,-118.49979098684352]];
-        var layer_asdf8_8 = new L.imageOverlay(img_asdf8_8,
-                                              img_bounds_asdf8_8,
-                                              {pane: 'pane_asdf8_8'});
-        bounds_group.addLayer(layer_asdf8_8);
-        map.addLayer(layer_asdf8_8);
-        map.createPane('pane_asdf9_9');
-        map.getPane('pane_asdf9_9').style.zIndex = 409;
-        var img_asdf9_9 = 'data/asdf9_9.png';
-        var img_bounds_asdf9_9 = [[34.00969943428776,-118.48901899137728],[34.01421834378432,-118.48321657224646]];
-        var layer_asdf9_9 = new L.imageOverlay(img_asdf9_9,
-                                              img_bounds_asdf9_9,
-                                              {pane: 'pane_asdf9_9'});
-        bounds_group.addLayer(layer_asdf9_9);
-        map.addLayer(layer_asdf9_9);
-        map.createPane('pane_asdf10_10');
-        map.getPane('pane_asdf10_10').style.zIndex = 410;
-        var img_asdf10_10 = 'data/asdf10_10.png';
-        var img_bounds_asdf10_10 = [[34.02312257100367,-118.46625542457276],[34.02516909642242,-118.46375480918066]];
-        var layer_asdf10_10 = new L.imageOverlay(img_asdf10_10,
-                                              img_bounds_asdf10_10,
-                                              {pane: 'pane_asdf10_10'});
-        bounds_group.addLayer(layer_asdf10_10);
-        map.addLayer(layer_asdf10_10);
-        function pop_Sites_11(feature, layer) {
+        map.createPane('pane_Screenshot20261118125545_modified_1');
+        map.getPane('pane_Screenshot20261118125545_modified_1').style.zIndex = 401;
+        var img_Screenshot20261118125545_modified_1 = 'data/Screenshot20261118125545_modified_1.png';
+        var img_bounds_Screenshot20261118125545_modified_1 = [[34.02312257100367,-118.46625542457276],[34.02516909642242,-118.46375480918066]];
+        var layer_Screenshot20261118125545_modified_1 = new L.imageOverlay(img_Screenshot20261118125545_modified_1,
+                                              img_bounds_Screenshot20261118125545_modified_1,
+                                              {pane: 'pane_Screenshot20261118125545_modified_1'});
+        bounds_group.addLayer(layer_Screenshot20261118125545_modified_1);
+        map.addLayer(layer_Screenshot20261118125545_modified_1);
+        map.createPane('pane_SamohiAerialComposite_modified_2');
+        map.getPane('pane_SamohiAerialComposite_modified_2').style.zIndex = 402;
+        var img_SamohiAerialComposite_modified_2 = 'data/SamohiAerialComposite_modified_2.png';
+        var img_bounds_SamohiAerialComposite_modified_2 = [[34.00969943428776,-118.48901899137728],[34.01421834378432,-118.48321657224646]];
+        var layer_SamohiAerialComposite_modified_2 = new L.imageOverlay(img_SamohiAerialComposite_modified_2,
+                                              img_bounds_SamohiAerialComposite_modified_2,
+                                              {pane: 'pane_SamohiAerialComposite_modified_2'});
+        bounds_group.addLayer(layer_SamohiAerialComposite_modified_2);
+        map.addLayer(layer_SamohiAerialComposite_modified_2);
+        map.createPane('pane_OPSAerial_modified_3');
+        map.getPane('pane_OPSAerial_modified_3').style.zIndex = 403;
+        var img_OPSAerial_modified_3 = 'data/OPSAerial_modified_3.png';
+        var img_bounds_OPSAerial_modified_3 = [[34.00454729118796,-118.48253548830019],[34.00699004380417,-118.47969561070444]];
+        var layer_OPSAerial_modified_3 = new L.imageOverlay(img_OPSAerial_modified_3,
+                                              img_bounds_OPSAerial_modified_3,
+                                              {pane: 'pane_OPSAerial_modified_3'});
+        bounds_group.addLayer(layer_OPSAerial_modified_3);
+        map.addLayer(layer_OPSAerial_modified_3);
+        map.createPane('pane_ObamaAerial_modified_4');
+        map.getPane('pane_ObamaAerial_modified_4').style.zIndex = 404;
+        var img_ObamaAerial_modified_4 = 'data/ObamaAerial_modified_4.png';
+        var img_bounds_ObamaAerial_modified_4 = [[34.00595701473303,-118.47904120282958],[34.008393213112875,-118.47620761686021]];
+        var layer_ObamaAerial_modified_4 = new L.imageOverlay(img_ObamaAerial_modified_4,
+                                              img_bounds_ObamaAerial_modified_4,
+                                              {pane: 'pane_ObamaAerial_modified_4'});
+        bounds_group.addLayer(layer_ObamaAerial_modified_4);
+        map.addLayer(layer_ObamaAerial_modified_4);
+        map.createPane('pane_RogersAerial_modified_5');
+        map.getPane('pane_RogersAerial_modified_5').style.zIndex = 405;
+        var img_RogersAerial_modified_5 = 'data/RogersAerial_modified_5.png';
+        var img_bounds_RogersAerial_modified_5 = [[34.01107576706088,-118.47357423538294],[34.01596684413179,-118.4679301377129]];
+        var layer_RogersAerial_modified_5 = new L.imageOverlay(img_RogersAerial_modified_5,
+                                              img_bounds_RogersAerial_modified_5,
+                                              {pane: 'pane_RogersAerial_modified_5'});
+        bounds_group.addLayer(layer_RogersAerial_modified_5);
+        map.addLayer(layer_RogersAerial_modified_5);
+        map.createPane('pane_JAMSAerial_modified_6');
+        map.getPane('pane_JAMSAerial_modified_6').style.zIndex = 406;
+        var img_JAMSAerial_modified_6 = 'data/JAMSAerial_modified_6.png';
+        var img_bounds_JAMSAerial_modified_6 = [[34.01116533256837,-118.47174737675432],[34.01604478463181,-118.46608749843944]];
+        var layer_JAMSAerial_modified_6 = new L.imageOverlay(img_JAMSAerial_modified_6,
+                                              img_bounds_JAMSAerial_modified_6,
+                                              {pane: 'pane_JAMSAerial_modified_6'});
+        bounds_group.addLayer(layer_JAMSAerial_modified_6);
+        map.addLayer(layer_JAMSAerial_modified_6);
+        map.createPane('pane_FranklinAerial_modified_7');
+        map.getPane('pane_FranklinAerial_modified_7').style.zIndex = 407;
+        var img_FranklinAerial_modified_7 = 'data/FranklinAerial_modified_7.png';
+        var img_bounds_FranklinAerial_modified_7 = [[-11271539.754236342,-36730134.959095486],[40386307.17651218,50111781.63175289]];
+        var layer_FranklinAerial_modified_7 = new L.imageOverlay(img_FranklinAerial_modified_7,
+                                              img_bounds_FranklinAerial_modified_7,
+                                              {pane: 'pane_FranklinAerial_modified_7'});
+        bounds_group.addLayer(layer_FranklinAerial_modified_7);
+        map.addLayer(layer_FranklinAerial_modified_7);
+        map.createPane('pane_McKinley_modified_8');
+        map.getPane('pane_McKinley_modified_8').style.zIndex = 408;
+        var img_McKinley_modified_8 = 'data/McKinley_modified_8.png';
+        var img_bounds_McKinley_modified_8 = [[34.031050686037034,-118.47870191931301],[34.03352002884231,-118.47579043665922]];
+        var layer_McKinley_modified_8 = new L.imageOverlay(img_McKinley_modified_8,
+                                              img_bounds_McKinley_modified_8,
+                                              {pane: 'pane_McKinley_modified_8'});
+        bounds_group.addLayer(layer_McKinley_modified_8);
+        map.addLayer(layer_McKinley_modified_8);
+        map.createPane('pane_LincolnAerial_modified_9');
+        map.getPane('pane_LincolnAerial_modified_9').style.zIndex = 409;
+        var img_LincolnAerial_modified_9 = 'data/LincolnAerial_modified_9.png';
+        var img_bounds_LincolnAerial_modified_9 = [[34.02807185044046,-118.49202614746265],[34.03103791725688,-118.48855039901878]];
+        var layer_LincolnAerial_modified_9 = new L.imageOverlay(img_LincolnAerial_modified_9,
+                                              img_bounds_LincolnAerial_modified_9,
+                                              {pane: 'pane_LincolnAerial_modified_9'});
+        bounds_group.addLayer(layer_LincolnAerial_modified_9);
+        map.addLayer(layer_LincolnAerial_modified_9);
+        map.createPane('pane_Roosevelt_modified_10');
+        map.getPane('pane_Roosevelt_modified_10').style.zIndex = 410;
+        var img_Roosevelt_modified_10 = 'data/Roosevelt_modified_10.png';
+        var img_bounds_Roosevelt_modified_10 = [[34.02743085729619,-118.5030686040829],[34.03022819193451,-118.49979098684352]];
+        var layer_Roosevelt_modified_10 = new L.imageOverlay(img_Roosevelt_modified_10,
+                                              img_bounds_Roosevelt_modified_10,
+                                              {pane: 'pane_Roosevelt_modified_10'});
+        bounds_group.addLayer(layer_Roosevelt_modified_10);
+        map.addLayer(layer_Roosevelt_modified_10);
+        map.createPane('pane_MalibuHS_modified_11');
+        map.getPane('pane_MalibuHS_modified_11').style.zIndex = 411;
+        var img_MalibuHS_modified_11 = 'data/MalibuHS_modified_11.png';
+        var img_bounds_MalibuHS_modified_11 = [[34.02285147502194,-118.82983065961791],[34.02845803929854,-118.82317195182544]];
+        var layer_MalibuHS_modified_11 = new L.imageOverlay(img_MalibuHS_modified_11,
+                                              img_bounds_MalibuHS_modified_11,
+                                              {pane: 'pane_MalibuHS_modified_11'});
+        bounds_group.addLayer(layer_MalibuHS_modified_11);
+        map.addLayer(layer_MalibuHS_modified_11);
+        function pop_Sites_12(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -271,9 +280,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Sites_11_0() {
+        function style_Sites_12_0() {
             return {
-                pane: 'pane_Sites_11',
+                pane: 'pane_Sites_12',
                 opacity: 1,
                 color: 'rgba(255,238,0,1.0)',
                 dashArray: '',
@@ -284,21 +293,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Sites_11');
-        map.getPane('pane_Sites_11').style.zIndex = 411;
-        map.getPane('pane_Sites_11').style['mix-blend-mode'] = 'normal';
-        var layer_Sites_11 = new L.geoJson(json_Sites_11, {
+        map.createPane('pane_Sites_12');
+        map.getPane('pane_Sites_12').style.zIndex = 412;
+        map.getPane('pane_Sites_12').style['mix-blend-mode'] = 'normal';
+        var layer_Sites_12 = new L.geoJson(json_Sites_12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Sites_11',
-            layerName: 'layer_Sites_11',
-            pane: 'pane_Sites_11',
-            onEachFeature: pop_Sites_11,
-            style: style_Sites_11_0,
+            dataVar: 'json_Sites_12',
+            layerName: 'layer_Sites_12',
+            pane: 'pane_Sites_12',
+            onEachFeature: pop_Sites_12,
+            style: style_Sites_12_0,
         });
-        bounds_group.addLayer(layer_Sites_11);
-        map.addLayer(layer_Sites_11);
-        function pop_Assets_v2_12(feature, layer) {
+        bounds_group.addLayer(layer_Sites_12);
+        map.addLayer(layer_Sites_12);
+        function pop_Assets_v2_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -334,11 +343,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Assets_v2_12_0(feature) {
+        function style_Assets_v2_13_0(feature) {
             switch(String(feature.properties['category'])) {
                 case 'Functional':
                     return {
-                pane: 'pane_Assets_v2_12',
+                pane: 'pane_Assets_v2_13',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -348,7 +357,7 @@
                     break;
                 case 'Non-Functional':
                     return {
-                pane: 'pane_Assets_v2_12',
+                pane: 'pane_Assets_v2_13',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -358,49 +367,50 @@
                     break;
             }
         }
-        function style_Assets_v2_12_1(feature) {
+        function style_Assets_v2_13_1(feature) {
             switch(String(feature.properties['category'])) {
                 case 'Functional':
                     return {
-                pane: 'pane_Assets_v2_12',
+                pane: 'pane_Assets_v2_13',
                 interactive: true,
             }
                     break;
                 case 'Non-Functional':
                     return {
-                pane: 'pane_Assets_v2_12',
+                pane: 'pane_Assets_v2_13',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_Assets_v2_12');
-        map.getPane('pane_Assets_v2_12').style.zIndex = 412;
-        map.getPane('pane_Assets_v2_12').style['mix-blend-mode'] = 'normal';
-        var layer_Assets_v2_12 = new L.geoJson.multiStyle(json_Assets_v2_12, {
+        map.createPane('pane_Assets_v2_13');
+        map.getPane('pane_Assets_v2_13').style.zIndex = 413;
+        map.getPane('pane_Assets_v2_13').style['mix-blend-mode'] = 'normal';
+        var layer_Assets_v2_13 = new L.geoJson.multiStyle(json_Assets_v2_13, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Assets_v2_12',
-            layerName: 'layer_Assets_v2_12',
-            pane: 'pane_Assets_v2_12',
-            onEachFeature: pop_Assets_v2_12,
-            styles: [style_Assets_v2_12_0,style_Assets_v2_12_1,]
+            dataVar: 'json_Assets_v2_13',
+            layerName: 'layer_Assets_v2_13',
+            pane: 'pane_Assets_v2_13',
+            onEachFeature: pop_Assets_v2_13,
+            styles: [style_Assets_v2_13_0,style_Assets_v2_13_1,]
         });
-        bounds_group.addLayer(layer_Assets_v2_12);
-        map.addLayer(layer_Assets_v2_12);
+        bounds_group.addLayer(layer_Assets_v2_13);
+        map.addLayer(layer_Assets_v2_13);
         var overlaysTree = [
-            {label: 'Assets_v2<br /><table><tr><td style="text-align: center;"><img src="legend/Assets_v2_12_FunctionalTurf0.png" /></td><td>Functional Turf</td></tr><tr><td style="text-align: center;"><img src="legend/Assets_v2_12_NonFunctionalTurf1.png" /></td><td>Non-Functional Turf</td></tr></table>', layer: layer_Assets_v2_12},
-            {label: '<img src="legend/Sites_11.png" /> Sites', layer: layer_Sites_11},
-            {label: "asdf10", layer: layer_asdf10_10},
-            {label: "asdf9", layer: layer_asdf9_9},
-            {label: "asdf8", layer: layer_asdf8_8},
-            {label: "asdf7", layer: layer_asdf7_7},
-            {label: "asdf6", layer: layer_asdf6_6},
-            {label: "asdf5", layer: layer_asdf5_5},
-            {label: "asdf4", layer: layer_asdf4_4},
-            {label: "asdf3", layer: layer_asdf3_3},
-            {label: "asdf2", layer: layer_asdf2_2},
-            {label: "asdf1", layer: layer_asdf1_1},
+            {label: 'Assets_v2<br /><table><tr><td style="text-align: center;"><img src="legend/Assets_v2_13_FunctionalTurf0.png" /></td><td>Functional Turf</td></tr><tr><td style="text-align: center;"><img src="legend/Assets_v2_13_NonFunctionalTurf1.png" /></td><td>Non-Functional Turf</td></tr></table>', layer: layer_Assets_v2_13},
+            {label: '<img src="legend/Sites_12.png" /> Sites', layer: layer_Sites_12},
+            {label: "MalibuHS_modified", layer: layer_MalibuHS_modified_11},
+            {label: "Roosevelt_modified", layer: layer_Roosevelt_modified_10},
+            {label: "Lincoln-Aerial_modified", layer: layer_LincolnAerial_modified_9},
+            {label: "McKinley_modified", layer: layer_McKinley_modified_8},
+            {label: "Franklin-Aerial_modified", layer: layer_FranklinAerial_modified_7},
+            {label: "JAMS-Aerial_modified", layer: layer_JAMSAerial_modified_6},
+            {label: "Rogers-Aerial_modified", layer: layer_RogersAerial_modified_5},
+            {label: "Obama-Aerial_modified", layer: layer_ObamaAerial_modified_4},
+            {label: "OPS-Aerial_modified", layer: layer_OPSAerial_modified_3},
+            {label: "Samohi-Aerial-Composite_modified", layer: layer_SamohiAerialComposite_modified_2},
+            {label: "Screenshot 2026-11-18 125545_modified", layer: layer_Screenshot20261118125545_modified_1},
             {label: "LACounty_Aerial", layer: layer_LACounty_Aerial_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
@@ -464,12 +474,12 @@
         });       
         setBounds();
         var i = 0;
-        layer_Assets_v2_12.eachLayer(function(layer) {
+        layer_Assets_v2_13.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((exp_label_Assets_v2_12_eval_expression(context) !== null?String('<div style="color: #ffffff; font-size: 12pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + exp_label_Assets_v2_12_eval_expression(context)).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Assets_v2_12'});
+            layer.bindTooltip((exp_label_Assets_v2_13_eval_expression(context) !== null?String('<div style="color: #ffffff; font-size: 12pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + exp_label_Assets_v2_13_eval_expression(context)).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Assets_v2_13'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -481,15 +491,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer_Assets_v2_12]);
+        resetLabels([layer_Assets_v2_13]);
         map.on("zoomend", function(){
-            resetLabels([layer_Assets_v2_12]);
+            resetLabels([layer_Assets_v2_13]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Assets_v2_12]);
+            resetLabels([layer_Assets_v2_13]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Assets_v2_12]);
+            resetLabels([layer_Assets_v2_13]);
         });
         </script>
 		<!-- ===== Custom additions ===== -->
@@ -583,7 +593,9 @@
   const ASSETS_LAYER = 'Assets_v2';   // asset layer name as in QGIS (spaces removed)
   const SITES_LAYER  = 'Sites';       // site boundary layer name
   const SITE_COLOR   = 'rgb(255,238,0)';
+  const SITE_LINE    = 2;             // site outline width (px)
   const SITE_FILL    = 0.1;           // site fill opacity on hover (0.1 = 10%)
+  const TURF_OPACITY = 0.6;           // turf fill opacity (1 = solid, 0.6 = 60%)
 
   // Find qgis2web's variables even if the number suffix changes (_1, _2, ...)
   const find = prefix => Object.keys(window).find(k => new RegExp('^' + prefix + '_\\d+$').test(k));
@@ -601,6 +613,27 @@
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const sqft = p => Number(p.area_sqft) || 0;
   const fmt  = n => Math.round(n).toLocaleString();
+
+  // ---- Stacking order (bottom → top) ----
+  //   400–449  basemap + georeferenced image overlays (qgis2web's panes)
+  //   450      site fill: hover tint + click target (under the turf)
+  //   460      turf
+  //   470      site outline: display-only, always visible
+  map.getPane(layer.options.pane).style.zIndex = 460;
+  map.getPane(layer.options.pane).style.opacity = TURF_OPACITY;
+
+  let siteOutline = null;
+  if (sitesLayer) {
+    map.getPane(sitesLayer.options.pane).style.zIndex = 450;
+
+    map.createPane('pane_site_outline');
+    map.getPane('pane_site_outline').style.zIndex = 470;
+    map.getPane('pane_site_outline').style.pointerEvents = 'none';
+    siteOutline = L.geoJson(sitesData, {
+      pane: 'pane_site_outline', interactive: false,
+      style: { color: SITE_COLOR, weight: SITE_LINE, fill: false }
+    }).addTo(map);
+  }
 
   // ---- Map controls: north arrow (top-left), zoom + scale (bottom-left) ----
   const North = L.Control.extend({
@@ -623,15 +656,14 @@
   });
   const labelFor = name => siteLabel[name] || name;
 
-  // ---- Sites: no fill normally, 10% fill on hover, custom popup ----
-  // Drawn under the lawns so lawn clicks/hover still go to the lawns.
+  // ---- Sites (lower layer): no outline of its own, 10% fill on hover, popup ----
   if (sitesLayer) {
-    map.getPane(sitesLayer.options.pane).style.zIndex = 401;
     sitesLayer.eachLayer(l => {
-      l.off('mouseover', highlightFeature);   // remove qgis2web's solid-yellow hover
-      l.on('mouseover', e => e.target.setStyle({ fillColor: SITE_COLOR, fillOpacity: SITE_FILL }));
+      l.off('mouseover'); l.off('mouseout'); l.off('popupopen');
+      l.setStyle({ stroke: false, fillColor: SITE_COLOR, fillOpacity: 0 });
+      l.on('mouseover', e => e.target.setStyle({ fillOpacity: SITE_FILL }));
+      l.on('mouseout',  e => e.target.setStyle({ fillOpacity: 0 }));
       const p = l.feature.properties;
-      l.off('popupopen');
       l.unbindPopup();
       l.bindPopup(`<strong>${esc(p.full_name || p.site_name)}</strong>` +
                   (p.address ? `<br>${esc(p.address)}` : ''));
@@ -646,8 +678,9 @@
   const activeCats = new Set(legendItems.map(([v]) => v));
   let selectedSchool = '';   // '' = all sites
 
-  const isVisible = p =>
-    activeCats.has(p.category) && (!selectedSchool || p.site_name === selectedSchool);
+  // On the map: filtered by category only. Summary/CSV: category + selected site.
+  const onMap     = p => activeCats.has(p.category);
+  const isVisible = p => onMap(p) && (!selectedSchool || p.site_name === selectedSchool);
 
   // ---- Assets: popup on every shape, sq ft label once per feature ----
   const shapes = [];
@@ -679,7 +712,7 @@
 
   function updateMap() {
     shapes.forEach(l => {
-      const show = isVisible(l.feature.properties);
+      const show = onMap(l.feature.properties);
       const el = l.getElement && l.getElement();
       if (el) el.style.display = show ? '' : 'none';
       if (l.getTooltip()) show ? l.openTooltip() : l.closeTooltip();
@@ -778,13 +811,14 @@
   }
   if (sitesLayer) {
     addLegendRow(`border-color:${SITE_COLOR}; background:transparent`, 'Site Boundary', row => {
-      map.hasLayer(sitesLayer) ? map.removeLayer(sitesLayer) : map.addLayer(sitesLayer);
-      row.classList.toggle('off', !map.hasLayer(sitesLayer));
+      const on = !map.hasLayer(siteOutline);
+      [sitesLayer, siteOutline].forEach(g => on ? map.addLayer(g) : map.removeLayer(g));
+      row.classList.toggle('off', !on);
     });
   }
   legendItems.forEach(([value, label]) => {
     const color = styleFn({ properties: { category: value } }).fillColor;
-    addLegendRow(`background:${color}`, label, row => {
+    addLegendRow(`background:${color}; opacity:${TURF_OPACITY}`, label, row => {
       activeCats.has(value) ? activeCats.delete(value) : activeCats.add(value);
       row.classList.toggle('off', !activeCats.has(value));
       refresh();
