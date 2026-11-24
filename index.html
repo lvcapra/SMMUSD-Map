@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="css/leaflet.photon.css">
         <style>
         #map {
-            width: 1773px;
-            height: 1153px;
+            width: 2935px;
+            height: 1162px;
         }
         </style>
         <title></title>
@@ -34,8 +34,8 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/Sites_12.js"></script>
-        <script src="data/Assets_v2_13.js"></script>
+        <script src="data/Sites_13.js"></script>
+        <script src="data/Assets_v2_14.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -54,7 +54,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[34.024541576194444,-118.49771728804468],[34.03554046799185,-118.48440911987626]]);
+        }).fitBounds([[34.00971545647537,-118.49295481461733],[34.01436200635685,-118.47898979127122]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -158,15 +158,15 @@
                                               {pane: 'pane_Screenshot20261118125545_modified_1'});
         bounds_group.addLayer(layer_Screenshot20261118125545_modified_1);
         map.addLayer(layer_Screenshot20261118125545_modified_1);
-        map.createPane('pane_SamohiAerialComposite_modified_2');
-        map.getPane('pane_SamohiAerialComposite_modified_2').style.zIndex = 402;
-        var img_SamohiAerialComposite_modified_2 = 'data/SamohiAerialComposite_modified_2.png';
-        var img_bounds_SamohiAerialComposite_modified_2 = [[34.00969943428776,-118.48901899137728],[34.01421834378432,-118.48321657224646]];
-        var layer_SamohiAerialComposite_modified_2 = new L.imageOverlay(img_SamohiAerialComposite_modified_2,
-                                              img_bounds_SamohiAerialComposite_modified_2,
-                                              {pane: 'pane_SamohiAerialComposite_modified_2'});
-        bounds_group.addLayer(layer_SamohiAerialComposite_modified_2);
-        map.addLayer(layer_SamohiAerialComposite_modified_2);
+        map.createPane('pane_SamohiAerialComposite_modified_modified_2');
+        map.getPane('pane_SamohiAerialComposite_modified_modified_2').style.zIndex = 402;
+        var img_SamohiAerialComposite_modified_modified_2 = 'data/SamohiAerialComposite_modified_modified_2.png';
+        var img_bounds_SamohiAerialComposite_modified_modified_2 = [[34.00969938592434,-118.489023259396],[34.014222741619854,-118.48321513107086]];
+        var layer_SamohiAerialComposite_modified_modified_2 = new L.imageOverlay(img_SamohiAerialComposite_modified_modified_2,
+                                              img_bounds_SamohiAerialComposite_modified_modified_2,
+                                              {pane: 'pane_SamohiAerialComposite_modified_modified_2'});
+        bounds_group.addLayer(layer_SamohiAerialComposite_modified_modified_2);
+        map.addLayer(layer_SamohiAerialComposite_modified_modified_2);
         map.createPane('pane_OPSAerial_modified_3');
         map.getPane('pane_OPSAerial_modified_3').style.zIndex = 403;
         var img_OPSAerial_modified_3 = 'data/OPSAerial_modified_3.png';
@@ -248,7 +248,16 @@
                                               {pane: 'pane_MalibuHS_modified_11'});
         bounds_group.addLayer(layer_MalibuHS_modified_11);
         map.addLayer(layer_MalibuHS_modified_11);
-        function pop_Sites_12(feature, layer) {
+        map.createPane('pane_Grant_modified_12');
+        map.getPane('pane_Grant_modified_12').style.zIndex = 412;
+        var img_Grant_modified_12 = 'data/Grant_modified_12.png';
+        var img_bounds_Grant_modified_12 = [[34.017466287048734,-118.4630288792169],[34.01976495006724,-118.46038109341478]];
+        var layer_Grant_modified_12 = new L.imageOverlay(img_Grant_modified_12,
+                                              img_bounds_Grant_modified_12,
+                                              {pane: 'pane_Grant_modified_12'});
+        bounds_group.addLayer(layer_Grant_modified_12);
+        map.addLayer(layer_Grant_modified_12);
+        function pop_Sites_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -280,9 +289,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Sites_12_0() {
+        function style_Sites_13_0() {
             return {
-                pane: 'pane_Sites_12',
+                pane: 'pane_Sites_13',
                 opacity: 1,
                 color: 'rgba(255,238,0,1.0)',
                 dashArray: '',
@@ -293,21 +302,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Sites_12');
-        map.getPane('pane_Sites_12').style.zIndex = 412;
-        map.getPane('pane_Sites_12').style['mix-blend-mode'] = 'normal';
-        var layer_Sites_12 = new L.geoJson(json_Sites_12, {
+        map.createPane('pane_Sites_13');
+        map.getPane('pane_Sites_13').style.zIndex = 413;
+        map.getPane('pane_Sites_13').style['mix-blend-mode'] = 'normal';
+        var layer_Sites_13 = new L.geoJson(json_Sites_13, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Sites_12',
-            layerName: 'layer_Sites_12',
-            pane: 'pane_Sites_12',
-            onEachFeature: pop_Sites_12,
-            style: style_Sites_12_0,
+            dataVar: 'json_Sites_13',
+            layerName: 'layer_Sites_13',
+            pane: 'pane_Sites_13',
+            onEachFeature: pop_Sites_13,
+            style: style_Sites_13_0,
         });
-        bounds_group.addLayer(layer_Sites_12);
-        map.addLayer(layer_Sites_12);
-        function pop_Assets_v2_13(feature, layer) {
+        bounds_group.addLayer(layer_Sites_13);
+        map.addLayer(layer_Sites_13);
+        function pop_Assets_v2_14(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -343,11 +352,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Assets_v2_13_0(feature) {
+        function style_Assets_v2_14_0(feature) {
             switch(String(feature.properties['category'])) {
                 case 'Functional':
                     return {
-                pane: 'pane_Assets_v2_13',
+                pane: 'pane_Assets_v2_14',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -357,7 +366,7 @@
                     break;
                 case 'Non-Functional':
                     return {
-                pane: 'pane_Assets_v2_13',
+                pane: 'pane_Assets_v2_14',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -367,39 +376,40 @@
                     break;
             }
         }
-        function style_Assets_v2_13_1(feature) {
+        function style_Assets_v2_14_1(feature) {
             switch(String(feature.properties['category'])) {
                 case 'Functional':
                     return {
-                pane: 'pane_Assets_v2_13',
+                pane: 'pane_Assets_v2_14',
                 interactive: true,
             }
                     break;
                 case 'Non-Functional':
                     return {
-                pane: 'pane_Assets_v2_13',
+                pane: 'pane_Assets_v2_14',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_Assets_v2_13');
-        map.getPane('pane_Assets_v2_13').style.zIndex = 413;
-        map.getPane('pane_Assets_v2_13').style['mix-blend-mode'] = 'normal';
-        var layer_Assets_v2_13 = new L.geoJson.multiStyle(json_Assets_v2_13, {
+        map.createPane('pane_Assets_v2_14');
+        map.getPane('pane_Assets_v2_14').style.zIndex = 414;
+        map.getPane('pane_Assets_v2_14').style['mix-blend-mode'] = 'normal';
+        var layer_Assets_v2_14 = new L.geoJson.multiStyle(json_Assets_v2_14, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Assets_v2_13',
-            layerName: 'layer_Assets_v2_13',
-            pane: 'pane_Assets_v2_13',
-            onEachFeature: pop_Assets_v2_13,
-            styles: [style_Assets_v2_13_0,style_Assets_v2_13_1,]
+            dataVar: 'json_Assets_v2_14',
+            layerName: 'layer_Assets_v2_14',
+            pane: 'pane_Assets_v2_14',
+            onEachFeature: pop_Assets_v2_14,
+            styles: [style_Assets_v2_14_0,style_Assets_v2_14_1,]
         });
-        bounds_group.addLayer(layer_Assets_v2_13);
-        map.addLayer(layer_Assets_v2_13);
+        bounds_group.addLayer(layer_Assets_v2_14);
+        map.addLayer(layer_Assets_v2_14);
         var overlaysTree = [
-            {label: 'Assets_v2<br /><table><tr><td style="text-align: center;"><img src="legend/Assets_v2_13_FunctionalTurf0.png" /></td><td>Functional Turf</td></tr><tr><td style="text-align: center;"><img src="legend/Assets_v2_13_NonFunctionalTurf1.png" /></td><td>Non-Functional Turf</td></tr></table>', layer: layer_Assets_v2_13},
-            {label: '<img src="legend/Sites_12.png" /> Sites', layer: layer_Sites_12},
+            {label: 'Assets_v2<br /><table><tr><td style="text-align: center;"><img src="legend/Assets_v2_14_FunctionalTurf0.png" /></td><td>Functional Turf</td></tr><tr><td style="text-align: center;"><img src="legend/Assets_v2_14_NonFunctionalTurf1.png" /></td><td>Non-Functional Turf</td></tr></table>', layer: layer_Assets_v2_14},
+            {label: '<img src="legend/Sites_13.png" /> Sites', layer: layer_Sites_13},
+            {label: "Grant_modified", layer: layer_Grant_modified_12},
             {label: "MalibuHS_modified", layer: layer_MalibuHS_modified_11},
             {label: "Roosevelt_modified", layer: layer_Roosevelt_modified_10},
             {label: "Lincoln-Aerial_modified", layer: layer_LincolnAerial_modified_9},
@@ -409,7 +419,7 @@
             {label: "Rogers-Aerial_modified", layer: layer_RogersAerial_modified_5},
             {label: "Obama-Aerial_modified", layer: layer_ObamaAerial_modified_4},
             {label: "OPS-Aerial_modified", layer: layer_OPSAerial_modified_3},
-            {label: "Samohi-Aerial-Composite_modified", layer: layer_SamohiAerialComposite_modified_2},
+            {label: "Samohi-Aerial-Composite_modified_modified", layer: layer_SamohiAerialComposite_modified_modified_2},
             {label: "Screenshot 2026-11-18 125545_modified", layer: layer_Screenshot20261118125545_modified_1},
             {label: "LACounty_Aerial", layer: layer_LACounty_Aerial_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -474,12 +484,12 @@
         });       
         setBounds();
         var i = 0;
-        layer_Assets_v2_13.eachLayer(function(layer) {
+        layer_Assets_v2_14.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((exp_label_Assets_v2_13_eval_expression(context) !== null?String('<div style="color: #ffffff; font-size: 12pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + exp_label_Assets_v2_13_eval_expression(context)).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Assets_v2_13'});
+            layer.bindTooltip((exp_label_Assets_v2_14_eval_expression(context) !== null?String('<div style="color: #ffffff; font-size: 12pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + exp_label_Assets_v2_14_eval_expression(context)).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Assets_v2_14'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -491,15 +501,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer_Assets_v2_13]);
+        resetLabels([layer_Assets_v2_14]);
         map.on("zoomend", function(){
-            resetLabels([layer_Assets_v2_13]);
+            resetLabels([layer_Assets_v2_14]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Assets_v2_13]);
+            resetLabels([layer_Assets_v2_14]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Assets_v2_13]);
+            resetLabels([layer_Assets_v2_14]);
         });
         </script>
 		<!-- ===== Custom additions ===== -->
@@ -593,9 +603,7 @@
   const ASSETS_LAYER = 'Assets_v2';   // asset layer name as in QGIS (spaces removed)
   const SITES_LAYER  = 'Sites';       // site boundary layer name
   const SITE_COLOR   = 'rgb(255,238,0)';
-  const SITE_LINE    = 2;             // site outline width (px)
   const SITE_FILL    = 0.1;           // site fill opacity on hover (0.1 = 10%)
-  const TURF_OPACITY = 0.6;           // turf fill opacity (1 = solid, 0.6 = 60%)
 
   // Find qgis2web's variables even if the number suffix changes (_1, _2, ...)
   const find = prefix => Object.keys(window).find(k => new RegExp('^' + prefix + '_\\d+$').test(k));
@@ -613,27 +621,6 @@
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const sqft = p => Number(p.area_sqft) || 0;
   const fmt  = n => Math.round(n).toLocaleString();
-
-  // ---- Stacking order (bottom → top) ----
-  //   400–449  basemap + georeferenced image overlays (qgis2web's panes)
-  //   450      site fill: hover tint + click target (under the turf)
-  //   460      turf
-  //   470      site outline: display-only, always visible
-  map.getPane(layer.options.pane).style.zIndex = 460;
-  map.getPane(layer.options.pane).style.opacity = TURF_OPACITY;
-
-  let siteOutline = null;
-  if (sitesLayer) {
-    map.getPane(sitesLayer.options.pane).style.zIndex = 450;
-
-    map.createPane('pane_site_outline');
-    map.getPane('pane_site_outline').style.zIndex = 470;
-    map.getPane('pane_site_outline').style.pointerEvents = 'none';
-    siteOutline = L.geoJson(sitesData, {
-      pane: 'pane_site_outline', interactive: false,
-      style: { color: SITE_COLOR, weight: SITE_LINE, fill: false }
-    }).addTo(map);
-  }
 
   // ---- Map controls: north arrow (top-left), zoom + scale (bottom-left) ----
   const North = L.Control.extend({
@@ -656,14 +643,15 @@
   });
   const labelFor = name => siteLabel[name] || name;
 
-  // ---- Sites (lower layer): no outline of its own, 10% fill on hover, popup ----
+  // ---- Sites: no fill normally, 10% fill on hover, custom popup ----
+  // Drawn under the lawns so lawn clicks/hover still go to the lawns.
   if (sitesLayer) {
+    map.getPane(sitesLayer.options.pane).style.zIndex = 401;
     sitesLayer.eachLayer(l => {
-      l.off('mouseover'); l.off('mouseout'); l.off('popupopen');
-      l.setStyle({ stroke: false, fillColor: SITE_COLOR, fillOpacity: 0 });
-      l.on('mouseover', e => e.target.setStyle({ fillOpacity: SITE_FILL }));
-      l.on('mouseout',  e => e.target.setStyle({ fillOpacity: 0 }));
+      l.off('mouseover', highlightFeature);   // remove qgis2web's solid-yellow hover
+      l.on('mouseover', e => e.target.setStyle({ fillColor: SITE_COLOR, fillOpacity: SITE_FILL }));
       const p = l.feature.properties;
+      l.off('popupopen');
       l.unbindPopup();
       l.bindPopup(`<strong>${esc(p.full_name || p.site_name)}</strong>` +
                   (p.address ? `<br>${esc(p.address)}` : ''));
@@ -678,9 +666,8 @@
   const activeCats = new Set(legendItems.map(([v]) => v));
   let selectedSchool = '';   // '' = all sites
 
-  // On the map: filtered by category only. Summary/CSV: category + selected site.
-  const onMap     = p => activeCats.has(p.category);
-  const isVisible = p => onMap(p) && (!selectedSchool || p.site_name === selectedSchool);
+  const isVisible = p =>
+    activeCats.has(p.category) && (!selectedSchool || p.site_name === selectedSchool);
 
   // ---- Assets: popup on every shape, sq ft label once per feature ----
   const shapes = [];
@@ -712,7 +699,7 @@
 
   function updateMap() {
     shapes.forEach(l => {
-      const show = onMap(l.feature.properties);
+      const show = isVisible(l.feature.properties);
       const el = l.getElement && l.getElement();
       if (el) el.style.display = show ? '' : 'none';
       if (l.getTooltip()) show ? l.openTooltip() : l.closeTooltip();
@@ -811,14 +798,13 @@
   }
   if (sitesLayer) {
     addLegendRow(`border-color:${SITE_COLOR}; background:transparent`, 'Site Boundary', row => {
-      const on = !map.hasLayer(siteOutline);
-      [sitesLayer, siteOutline].forEach(g => on ? map.addLayer(g) : map.removeLayer(g));
-      row.classList.toggle('off', !on);
+      map.hasLayer(sitesLayer) ? map.removeLayer(sitesLayer) : map.addLayer(sitesLayer);
+      row.classList.toggle('off', !map.hasLayer(sitesLayer));
     });
   }
   legendItems.forEach(([value, label]) => {
     const color = styleFn({ properties: { category: value } }).fillColor;
-    addLegendRow(`background:${color}; opacity:${TURF_OPACITY}`, label, row => {
+    addLegendRow(`background:${color}`, label, row => {
       activeCats.has(value) ? activeCats.delete(value) : activeCats.add(value);
       row.classList.toggle('off', !activeCats.has(value));
       refresh();
